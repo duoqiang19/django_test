@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>System Details</title>
+</head>
+<body>
+{% extends 'power_plant/base.html' %}
+
+{% block content %}
+
+    <p>System:{{ system }}</p>
+
+    <p>
+        <a href="{% url 'power_plant:new_entry' system.id %}">add new entry</a>
+    </p>
+
+    <ul>
+    {% for entry in entries %}
+        <li>
+            <p>{{ entry.date_added|date:'M d, Y H:i' }}</p>
+            <p>{{ entry.text|linebreaks }}</p>
+            <p>
+                <a href="{% url 'power_plant:edit_entry' entry.id %}">edit entry</a>
+            </p>
+        </li>
+    {% empty %}
+        <li>
+            There are no entries for this system yet.
+        </li>
+    {% endfor %}
+
+    </ul>
+{% endblock content %}
+</body>
+</html>

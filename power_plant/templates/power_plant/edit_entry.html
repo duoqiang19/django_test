@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Entry</title>
+</head>
+<body>
+
+{% extends "power_plant/base.html" %}
+
+{% block content %}
+
+    <P><a href="{% url 'power_plant:system' system.id %}">{{ system }}</a></P>
+
+    <p>Edit entry:</p>
+
+    <form action="{% url 'power_plant:edit_entry' entry.id %}" method='post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">save changes</button>
+
+    </form>
+
+{% endblock content %}
+
+</body>
+</html>

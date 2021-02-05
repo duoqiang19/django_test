@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>System List</title>
+</head>
+<body>
+
+{% extends "power_plant/base.html" %}
+
+{% block content %}
+
+    <p>Systems</p>
+
+    <ul>
+        {% for system in systems %}
+            <li>
+                <a href="{% url 'power_plant:system' system.id %}">{{ system }}</a>
+            </li>
+        {% empty %}
+            <li>No systems had been added yet.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'power_plant:new_system' %}">Add a new system:</a>
+
+{% endblock content %}
+
+</body>
+</html>

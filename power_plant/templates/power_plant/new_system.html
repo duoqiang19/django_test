@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NEW SYSTEM</title>
+</head>
+<body>
+{% extends "power_plant/base.html" %}
+
+{% block content %}
+
+    <P>Add a new system:</P>
+
+    <form action="{% url 'power_plant:new_system' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">add system</button>
+    </form>
+
+{% endblock content %}
+</body>
+</html>
